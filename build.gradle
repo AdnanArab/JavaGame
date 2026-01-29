@@ -51,7 +51,7 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
 
-            groupId = 'com.adnanarab'
+            groupId = 'com.github.AdnanArab'
             artifactId = 'JavaGame'
             version = '1.0.0'
         }
