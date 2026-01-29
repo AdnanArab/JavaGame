@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'maven-publish'
 }
 
 group = 'org.gradletestproject'
@@ -41,6 +42,28 @@ sourceSets {
     main {
         resources {
             srcDir 'src/main/resources'
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId = 'com.adnanarab'
+            artifactId = 'JavaGame'
+            version = '1.0.0'
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/AdnanArab/JavaGame")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
+            }
         }
     }
 }
